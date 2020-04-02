@@ -3,6 +3,10 @@
 
 a control which extends Text and can use awesome font icon for JavaFx/Tornadofx
 
+This liarbay includes the materical icon from [Material Design](https://github.com/Templarian/MaterialDesign),you can download the `icon-preview.html` to see the icon
+
+[中文文档](https://github.com/Stars-One/IconTextFx/blob/master/readme_cn.md)
+
 ## Usage
 ### 1.Import depdendency
 **Maven:**
