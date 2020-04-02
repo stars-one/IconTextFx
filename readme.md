@@ -141,3 +141,4 @@ In fact,the most unicode value is a hex data.For example,'\ue001' mapping the he
 - [Material Design](https://github.com/Templarian/MaterialDesign)
 - [MaterialDesign-Font](https://github.com/Templarian/MaterialDesign-Font)
 - [tornadofx](https://github.com/edvin/tornadofx)
+- [fonteditor](https://github.com/ecomfe/fonteditor)
