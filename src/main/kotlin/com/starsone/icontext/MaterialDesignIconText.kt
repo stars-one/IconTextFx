@@ -11,7 +11,6 @@ import java.util.*
  *
  * @author StarsOne
  * @date Create in  2020/3/31 0031 22:37
- * @description
  *
  */
 class MaterialDesignIconTextFactory {
