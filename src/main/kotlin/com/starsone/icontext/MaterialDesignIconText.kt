@@ -1,10 +1,10 @@
 package com.starsone.icontext
 
+import javafx.event.EventTarget
 import javafx.scene.text.Font
 import javafx.scene.text.Text
 import tornadofx.*
 import java.util.*
-
 
 
 /**
@@ -49,14 +49,14 @@ class MaterialDesignIconTextFactory {
 }
 
 class MaterialDesignIconText() : Text() {
-    var name:String = ""
+    var name: String = ""
 
-    constructor(unicode: Char,myFont: Font? = null) : this() {
+    constructor(unicode: Char, myFont: Font? = null) : this() {
         font = myFont ?: loadFont("/ttf/MaterialDesignIconsDesktop.ttf", 20.0)
         text = unicode.toString()
     }
 
-    constructor(text: String,myFont: Font? = null) : this() {
+    constructor(text: String, myFont: Font? = null) : this() {
         //设置字体
         name = text
         font = myFont ?: loadFont("/ttf/MaterialDesignIconsDesktop.ttf", 20.0)
@@ -68,6 +68,20 @@ class MaterialDesignIconText() : Text() {
         } else {
             println("${text}对应图标不存在")
         }
+    }
+
+    /**
+     * 设置字体大小为[size],可带单位,如px,em
+     */
+    fun setSize(size: String) {
+        style ="-fx-font-size:$size;"
+    }
+
+    /**
+     * 设置字体颜色为[color],color可以是16进制或者颜色名,如red
+     */
+    fun setColor(color: String) {
+        style="-fx-fill:$color;"
     }
 
 }
@@ -95,6 +109,34 @@ class MaterialProperties : Properties() {
         return set
     }
 
+}
+
+
+/**
+ * 字体图标 MaterialDesignIconText
+ * @param [color]可接受十六进制或字符串,例如red
+ * @param [size]支持单位(pt,px,em,cm,ex)带单位 如1pt
+ *
+ */
+fun EventTarget.icontext(iconName: String, size: String="", color: String = "", op: (MaterialDesignIconText.() -> Unit) = {}): MaterialDesignIconText {
+    val iconText = MaterialDesignIconText(iconName)
+    if (size.isNotBlank()) {
+        iconText.style {
+            if (size.isNotBlank()) {
+                when {
+                    size.contains("pt") -> fontSize = size.substringBefore("pt").toInt().pt
+                    size.contains("px") -> fontSize = size.substringBefore("px").toInt().px
+                    size.contains("em") -> fontSize = size.substringBefore("em").toInt().em
+                    size.contains("cm") -> fontSize = size.substringBefore("cm").toInt().cm
+                    size.contains("ex") -> fontSize = size.substringBefore("ex").toInt().ex
+                }
+            }
+            if (color.isNotBlank()) {
+                fill = c(color)
+            }
+        }
+    }
+    return opcr(this, iconText, op)
 }
 
 data class IconData(
