@@ -96,7 +96,7 @@ like this:
 
 ```
 //want to get a icon by icon name
-val icon = MaterialDesignIconTextFactory.getIcon("account")
+val icon = MaterialDesignIconTextFactory.getIconText("account")
 
 //want to get icons with a list saving more icon name
 val dataList = arraylistof("account","close")

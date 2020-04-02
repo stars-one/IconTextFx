@@ -95,7 +95,7 @@ iconText.setSize("20px");
 
 ```
 //通过图标名获得一个图标
-val icon = MaterialDesignIconTextFactory.getIcon("account")
+val icon = MaterialDesignIconTextFactory.getIconText("account")
 
 //通过一个存有多个图标名的List来获得多个图标
 val dataList = arraylistof("account","close")
