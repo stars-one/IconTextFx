@@ -1,13 +1,13 @@
 # IconTextFx
 ![](https://jitpack.io/v/Stars-One/IconTextFx.svg)	
 
-a control which extends Text and can use awesome font icon for JavaFx/Tornadofx
+为JavaFx/Tornadofx实现的字体图标控件,基于Text控件
 
-## Usage
-### 1.Import depdendency
+## 使用说明
+### 1.导入依赖
 **Maven:**
 
-open the `setting.xml `file and add following code
+打开maven目录中`setting.xml`文件,添加下面代码
 ```
 <repositories>
 	<repository>
@@ -17,22 +17,22 @@ open the `setting.xml `file and add following code
 </repositories>
 ```
 
-add the dependency in your `pom.xml`
+在你项目中的`pom.xml`添加依赖
 
-Input the late-version,**please look the jitpack picture to get the late version**
+**PS:在上述图片jitpack中可以看到最新的版本号**
+
 ```
 <dependency>
 	<groupId>com.github.Stars-One</groupId>
 	<artifactId>IconTextFx</artifactId>
-	<version>late-version</version>
+	<version>最新版本号</version>
 </dependency>
 ```
 
 **Gradle:**
 
-**Step 1.** Add the JitPack repository to your build file
+添加仓库:
 
-Add it in your root build.gradle at the end of repositories:
 ```
 allprojects {
 	repositories {
@@ -41,24 +41,26 @@ allprojects {
 	}
 }
 ```
-**Step 2.** Add the dependency
 
+添加依赖:
+
+**PS:在上述图片jitpack中可以看到最新的版本号**
 ```
 dependencies {
-	implementation 'com.github.Stars-One:IconTextFx:late-version'
+	implementation 'com.github.Stars-One:IconTextFx:最新版本号'
 }	
 ```
 
 ### 2.Use
-**Use in TornadoFx:**
+**TornadoFx使用**
 
-There is 3 parmas for it.All of them is String.
+
 
 |name	|descption	|example	|
 |--	|--	|--	|
-|iconName	|the name of icon	|account,you can see more in the `icon-preview.html` file|
-|size	|the size of icon|accept number with unit,like 1px,1em...|
-|color|the color of icon	|accept hex color value or color name,like #f391c8,red...	|
+|iconName	|字体图标对应的名字	|account,在`icon-preview.html`页面可以查看更多|
+|size	|字体的大小|接受带单位的字符串,如1px,1em|
+|color|字体颜色|接受十六进制颜色代码或颜色名称,如#f391c8,red...	|
 
 ```
 icontext("account","20px","red"){
@@ -66,59 +68,61 @@ icontext("account","20px","red"){
 }
 ```
 
-**Use in JavaFx:**
+**JavaFx使用:**
 
-**Note:I don't test this library in JavaFx Project.So please open an issue to tell me the bug when you meet some problem in JavaFx.**
+**PS:我并没有在JavaFx项目中测试过此开源库,如果你遇到问题请新建一个issue,告诉我你遇到的问题**
 
-You can use the MaterialDesignIconText or MaterialDesignIconTextFactory to get the icon text control.
+你可以使用`MaterialDesignIconText`或`MaterialDesignIconTextFactory`这两个类类获得对应的字体图标
 
-**like this:**
+
+**例如:**
 ```
 MaterialDesignIconText iconText = new MaterialDesignIconText("account");
-//set the color
+//设置颜色
 iconText.setColor("red");
-//set the size
+//设置字体大小
 iconText.setSize("20px");
 ```
 
-**The parameter is same as the above-mentioned table.**
+**上面的三个参数和上述表格中的参数类型一样**
 
-## Advanced Usage
+## 高级使用
 ### MaterialDesignIconTextFactory
 
-when you want to get more icon text,you can use this factory to get the icon text.
+如果你想一次性获得多个图标字体,你可以使用此工厂类来获取
 
-like this:
+**例如:**
 
 ```
-//want to get a icon by icon name
+//通过图标名获得一个图标
 val icon = MaterialDesignIconTextFactory.getIcon("account")
 
-//want to get icons with a list saving more icon name
+//通过一个存有多个图标名的List来获得多个图标
 val dataList = arraylistof("account","close")
 val icons = MaterialDesignIconTextFactory.getIconTextList(dataList)
 
-//want to get all icons
+//获得全部图标
 val icons = MaterialDesignIconTextFactory.getIconTextALL()
 
 ```
 ### IconText
-you can use this to load your custom tff file and show the icon font.
+你可以使用这个来加载自定义tff字体文件来显示字体图标
 
 ```
 val iconText = IconText("D:\\xx.ttf",'\ue001')
 ```
 
-**Note: the method of setColor and setSize are same as the above-mentioned table.**
-## Main Code Analysis
+此类也包含有`setColor`和`setSize`方法,参数接收和上面的表格一样
+## 核心代码分析
 
-How to accomlish a icon text?It's so easy.
+如何去实现一个字体图标?很简单
 
-1. load the tff file
-2. get the unicode
-3. set unicoe to the text control
 
-**like following code:**
+1. 加载tff文件
+2. 获得对应的unicode
+3. 设置text控件的text属性为unicode
+
+**例如:**
 ```
 text {
 	font = loadFont("/ttf/MaterialDesignIconsDesktop.ttf", 20)
@@ -130,13 +134,21 @@ text {
 }
 ```
 
-it's same as when you use javafx.
+**使用JavaFx也是一样:**
 
-**Note:**
+```
+Text text = Text()
+text.setFont = xx
+text.setText('\ue001'.toString());
+text.setStyle("-fx-font-size:18px");
+text.setStyle("-fx-fill:red");
+```
 
-In fact,the most unicode value is a hex data.For example,'\ue001' mapping the hex data `0xe001`
+**注意:**
 
-## Thanks
+实际上,大部分的unicode本质上是一个十六进制数据,如`'\ue001'` 对应`0xe001`
+
+## 致谢
 
 - [Material Design](https://github.com/Templarian/MaterialDesign)
 - [MaterialDesign-Font](https://github.com/Templarian/MaterialDesign-Font)
