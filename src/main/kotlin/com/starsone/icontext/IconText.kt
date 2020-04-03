@@ -1,6 +1,7 @@
 package com.starsone.icontext
 
 import javafx.event.EventTarget
+import javafx.scene.text.Font
 import javafx.scene.text.Text
 import tornadofx.*
 
@@ -11,26 +12,40 @@ import tornadofx.*
  */
 class IconText(tffPath: String, unicode: Char) : Text() {
     init {
-        val myFont = loadFont(tffPath,20)
+        val myFont = Font.loadFont(javaClass.getResourceAsStream(tffPath),20.0)
         font = myFont
         text = unicode.toString()
-
         style ="-fx-fill:red;"
     }
 
     /**
      * 设置字体大小为[size],可带单位,如px,em
      */
-
     fun setSize(size: String) {
-        style ="-fx-font-size:$size;"
+        style = if (style.isNotBlank()) {
+            if (style.contains("size")) {
+                "-fx-font-size:$size;"
+            } else {
+                "$style-fx-font-size:$size;"
+            }
+        } else {
+            "-fx-font-size:$size;"
+        }
     }
 
     /**
      * 设置字体颜色为[color],color可以是16进制或者颜色名,如red
      */
     fun setColor(color: String) {
-        style="-fx-fill:$color;"
+        style = if (style.isNotBlank()) {
+            if (style.contains("fill")) {
+                "-fx-fill:$color;"
+            } else {
+                "$style-fx-fill:$color;"
+            }
+        } else {
+            "-fx-fill:$color;"
+        }
     }
 }
 

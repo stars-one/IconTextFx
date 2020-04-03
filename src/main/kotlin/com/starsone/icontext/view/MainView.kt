@@ -8,7 +8,6 @@ class MainView :View() {
 
     override var root = vbox {
         setPrefSize(500.0, 300.0)
-
         val list = MaterialDesignIconTextFactory.getIconTextALL()
 
         scrollpane {

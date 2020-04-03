@@ -16,7 +16,7 @@ import java.util.*
 class MaterialDesignIconTextFactory {
 
     companion object {
-        private var myFont = loadFont("/ttf/MaterialDesignIconsDesktop.ttf", 20.0) as Font
+        private var myFont = Font.loadFont(MaterialDesignIconTextFactory::class.java.getResourceAsStream("/ttf/MaterialDesignIconsDesktop.ttf"), 20.0)
         private var pro = MaterialProperties()
 
         @JvmStatic
@@ -51,14 +51,14 @@ class MaterialDesignIconText() : Text() {
     var name: String = ""
 
     constructor(unicode: Char, myFont: Font? = null) : this() {
-        font = myFont ?: loadFont("/ttf/MaterialDesignIconsDesktop.ttf", 20.0)
+        font = myFont ?: Font.loadFont(javaClass.getResourceAsStream("/ttf/MaterialDesignIconsDesktop.ttf"), 20.0)
         text = unicode.toString()
     }
 
     constructor(text: String, myFont: Font? = null) : this() {
         //设置字体
         name = text
-        font = myFont ?: loadFont("/ttf/MaterialDesignIconsDesktop.ttf", 20.0)
+        font = myFont ?: Font.loadFont(javaClass.getResourceAsStream("/ttf/MaterialDesignIconsDesktop.ttf"), 20.0)
         val pro = Properties()
         pro.load(javaClass.getResourceAsStream("/mdIcon.properties"))
         //获得数字,转为char,转为string
@@ -73,14 +73,30 @@ class MaterialDesignIconText() : Text() {
      * 设置字体大小为[size],可带单位,如px,em
      */
     fun setSize(size: String) {
-        style ="-fx-font-size:$size;"
+        style = if (style.isNotBlank()) {
+            if (style.contains("size")) {
+                "-fx-font-size:$size;"
+            } else {
+                "$style-fx-font-size:$size;"
+            }
+        } else {
+            "-fx-font-size:$size;"
+        }
     }
 
     /**
      * 设置字体颜色为[color],color可以是16进制或者颜色名,如red
      */
     fun setColor(color: String) {
-        style="-fx-fill:$color;"
+        style = if (style.isNotBlank()) {
+            if (style.contains("fill")) {
+                "-fx-fill:$color;"
+            } else {
+                "$style-fx-fill:$color;"
+            }
+        } else {
+            "-fx-fill:$color;"
+        }
     }
 
 }
@@ -117,7 +133,7 @@ class MaterialProperties : Properties() {
  * @param [size]支持单位(pt,px,em,cm,ex)带单位 如1pt
  *
  */
-fun EventTarget.icontext(iconName: String, size: String="", color: String = "", op: (MaterialDesignIconText.() -> Unit) = {}): MaterialDesignIconText {
+fun EventTarget.icontext(iconName: String, size: String = "", color: String = "", op: (MaterialDesignIconText.() -> Unit) = {}): MaterialDesignIconText {
     val iconText = MaterialDesignIconText(iconName)
     if (size.isNotBlank()) {
         iconText.style {
