@@ -3,6 +3,8 @@
 
 为JavaFx/Tornadofx实现的字体图标控件,基于Text控件
 
+已经整合Material Desgin Icon,包含5000+个字体图标,字体图标来源[Material Design](https://github.com/Templarian/MaterialDesign)
+
 ## 使用说明
 ### 1.导入依赖
 **Maven:**
@@ -153,3 +155,4 @@ text.setStyle("-fx-fill:red");
 - [Material Design](https://github.com/Templarian/MaterialDesign)
 - [MaterialDesign-Font](https://github.com/Templarian/MaterialDesign-Font)
 - [tornadofx](https://github.com/edvin/tornadofx)
+- [fonteditor](https://github.com/ecomfe/fonteditor)
