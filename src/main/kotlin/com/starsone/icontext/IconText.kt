@@ -4,18 +4,25 @@ import javafx.event.EventTarget
 import javafx.scene.text.Font
 import javafx.scene.text.Text
 import tornadofx.*
+import java.io.FileInputStream
 
 /**
  *
  * @author StarsOne
  * @date Create in  2020/4/2 0002 19:44
  */
-class IconText(tffPath: String, unicode: Char) : Text() {
-    init {
+class IconText() : Text() {
+
+    constructor(tffPath: String, unicode: Char) : this() {
         val myFont = Font.loadFont(javaClass.getResourceAsStream(tffPath),20.0)
         font = myFont
         text = unicode.toString()
-        style ="-fx-fill:red;"
+    }
+
+    constructor(tffFileInputStream: FileInputStream, unicode: Char) : this() {
+        val myFont = Font.loadFont(tffFileInputStream,20.0)
+        font = myFont
+        text = unicode.toString()
     }
 
     /**
