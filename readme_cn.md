@@ -111,14 +111,18 @@ val icons = MaterialDesignIconTextFactory.getIconTextALL()
 你可以使用这个来加载自定义tff字体文件来显示字体图标
 
 ```
-val iconText = IconText("D:\\xx.ttf",'\ue001')
+//tff文件的绝对路径
+val iconText = IconText(new FileInputStream(File("D:\\xx.ttf")),'\ue001')
+
+//相对路径
+val iconText = IconText("/ttf/xx.ttf),'\ue001')
+
 ```
 
 此类也包含有`setColor`和`setSize`方法,参数接收和上面的表格一样
 ## 核心代码分析
 
 如何去实现一个字体图标?很简单
-
 
 1. 加载tff文件
 2. 获得对应的unicode
@@ -140,7 +144,8 @@ text {
 
 ```
 Text text = Text()
-text.setFont = xx
+//第二个参数可以随便填写
+text.setFont = Font.load(new FileInputStream(File("D:\\xx.ttf")),20.0)
 text.setText('\ue001'.toString());
 text.setStyle("-fx-font-size:18px");
 text.setStyle("-fx-fill:red");

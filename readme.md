@@ -3,7 +3,9 @@
 
 a control which extends Text and can use awesome font icon for JavaFx/Tornadofx
 
-This liarbay includes the materical icon from [Material Design](https://github.com/Templarian/MaterialDesign),you can download the `icon-preview.html` to see the icon
+This liarbay includes the materical icon from [Material Design](https://github.com/Templarian/MaterialDesign),it has 5000+ icons.
+
+You can download the `icon-preview.html` to see the icon.
 
 [中文文档](https://github.com/Stars-One/IconTextFx/blob/master/readme_cn.md)
 
@@ -53,8 +55,7 @@ dependencies {
 }	
 ```
 
-### 2.Use
-**Use in TornadoFx:**
+### 2.Use in TornadoFx
 
 There is 3 parmas for it.All of them is String.
 
@@ -70,11 +71,11 @@ icontext("account","20px","red"){
 }
 ```
 
-**Use in JavaFx:**
+### 3.Use in JavaFx
 
 **Note:I don't test this library in JavaFx Project.So please open an issue to tell me the bug when you meet some problem in JavaFx.**
 
-You can use the MaterialDesignIconText or MaterialDesignIconTextFactory to get the icon text control.
+You can use the `MaterialDesignIconText` or `MaterialDesignIconTextFactory` to get the icon text control.
 
 **like this:**
 ```
@@ -110,7 +111,9 @@ val icons = MaterialDesignIconTextFactory.getIconTextALL()
 you can use this to load your custom tff file and show the icon font.
 
 ```
-val iconText = IconText("D:\\xx.ttf",'\ue001')
+val iconText = IconText(new FileInputStream(File("D:\\xx.ttf")),'\ue001')
+
+val iconText = IconText("/ttf/xx.ttf),'\ue001')
 ```
 
 **Note: the method of setColor and setSize are same as the above-mentioned table.**
