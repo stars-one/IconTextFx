@@ -5,7 +5,7 @@
 
 已经整合Material Desgin Icon,包含5000+个字体图标,字体图标来源[Material Design](https://github.com/Templarian/MaterialDesign)
 
-## 使用说明
+## TornadoFx使用
 ### 1.导入依赖
 **Maven:**
 
@@ -53,11 +53,7 @@ dependencies {
 }	
 ```
 
-### 2.Use
-**TornadoFx使用**
-
-
-
+### 使用
 |name	|descption	|example	|
 |--	|--	|--	|
 |iconName	|字体图标对应的名字	|account,在`icon-preview.html`页面可以查看更多|
@@ -69,13 +65,15 @@ icontext("account","20px","red"){
 	
 }
 ```
+## JavaFx使用
 
-**JavaFx使用:**
+### 1.下载jar包
 
-**PS:我并没有在JavaFx项目中测试过此开源库,如果你遇到问题请新建一个issue,告诉我你遇到的问题**
+点击链接下载
+
+[IconTextFx-1.2-javafx.jar](https://github.com/Stars-One/IconTextFx/releases/download/v1.2/IconTextFx-1.2-javafx.jar)
 
 你可以使用`MaterialDesignIconText`或`MaterialDesignIconTextFactory`这两个类类获得对应的字体图标
-
 
 **例如:**
 ```

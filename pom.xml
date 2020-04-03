@@ -7,7 +7,7 @@
     <groupId>com.starsone</groupId>
     <artifactId>IconTextFx</artifactId>
     <!--版本-->
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <properties>

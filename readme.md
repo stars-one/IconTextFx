@@ -9,7 +9,7 @@ You can download the `icon-preview.html` to see the icon.
 
 [中文文档](https://github.com/Stars-One/IconTextFx/blob/master/readme_cn.md)
 
-## Usage
+## Usage in TornadoFx
 ### 1.Import depdendency
 **Maven:**
 
@@ -55,7 +55,7 @@ dependencies {
 }	
 ```
 
-### 2.Use in TornadoFx
+### 2.Use
 
 There is 3 parmas for it.All of them is String.
 
@@ -70,11 +70,15 @@ icontext("account","20px","red"){
 	
 }
 ```
+## Use in JavaFx
 
-### 3.Use in JavaFx
+### 1.import
 
-**Note:I don't test this library in JavaFx Project.So please open an issue to tell me the bug when you meet some problem in JavaFx.**
+click and download this jar
 
+[IconTextFx-1.2-javafx.jar](https://github.com/Stars-One/IconTextFx/releases/download/v1.2/IconTextFx-1.2-javafx.jar)
+
+### 2.Use
 You can use the `MaterialDesignIconText` or `MaterialDesignIconTextFactory` to get the icon text control.
 
 **like this:**
